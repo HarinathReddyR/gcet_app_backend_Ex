@@ -13,24 +13,35 @@ connection.connect((err, result) => {
     logger.log("info", "Connected to database");
 });
 
-function dbQuery(query: string, parms?:any[]) {
+async function  dbQuery(query: string, parms?:any[]) {
   return new Promise((resolve, reject) => {
+    connection.beginTransaction();
     connection.query(query, parms, (err, result, fields) => {
-      
-      err ?
-        reject(err) :
+      if (err) {
+        connection.rollback();
+        reject(err);
+      }
+      else {
+        connection.commit();
         resolve(result);
+      }
     });
   });
 }
 
 export function dbQueryWithFields(query: string, parms?:any[]) {
   return new Promise((resolve, reject) => {
+    connection.beginTransaction();
     connection.query(query, parms, (err, result, fields) => {
       
-      err ?
-        reject(err) :
-        resolve([result,fields]);
+      if (err) {
+        connection.rollback();
+        reject(err);
+      }
+      else {
+        connection.commit();
+        resolve(result);
+      }
     });
   });
 }
