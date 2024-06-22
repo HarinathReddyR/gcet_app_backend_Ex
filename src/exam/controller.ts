@@ -5,9 +5,9 @@ import dbQuery from "../services/db";
 import { profile } from "../interfaces/profile";
 
 
-export async function profile(req: Request, res: Response) {
+export async function CGPA(req: Request, res: Response) {
     const rollNo = req.query.rollNo as string;
-    logger.log("info", `request for dailyschedule`);
+    logger.log("info", `request for ExamCGPA`);
     if (isAnyUndefined(rollNo)) {
         res.status(400).json(responses.NotAllParamsGiven);
         return;

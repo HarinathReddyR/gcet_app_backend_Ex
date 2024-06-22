@@ -3,6 +3,7 @@ import loginRouter from "./login";
 import AttendanceRouter from "./attendance";
 import ScheduleRouter from "./schedule";
 import ProfileRouter from "./profile";
+import ExamRouter from "./exam";
 import { verifyToken } from "./login/controller";
 
 
@@ -13,6 +14,7 @@ router.use("/", ProfileRouter);
 router.use("/",AttendanceRouter)
 //registering schedule
 router.use("/",ScheduleRouter)
+router.use("/", ExamRouter);
 router.use(verifyToken); 
 
 export default router;
