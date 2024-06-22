@@ -1,11 +1,9 @@
 import { Router } from "express"; 
-import { isUserValid, sendOTP } from "./controller";
+import { attendance } from "./controller";
 
 const router: Router = Router(); 
  
 // Registering all the module routes here
-router.post("", isUserValid);
-
-router.get("/OTP",sendOTP);
-
+router.get("", attendance);
+ 
 export default router; 
