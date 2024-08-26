@@ -11,6 +11,8 @@ export interface periods {
     fromTime : string;
     toTime : string;
     subName : string;
+    subid :string;
+    fid :string;
     facultyName : string;
     // TODO: fill all the columns for completeness
 }
